@@ -13,18 +13,23 @@ Multimodal large language models (MLLMs) offer a powerful mechanism for interpre
 
 
 ## Setup
-As we design the LVLMs decoding strategy, it is convenient to use SID by installing our modified `transformers` package.
+As we design the LVLMs decoding strategy, it is convenient to use ANTRP by installing our modified `transformers` package.
 ```
 conda env create -f environment.yml
-conda activate SID
+conda activate ANTRP
 python -m pip install -e transformers
 ```
-<!-- #### The implement of SID are mainly in:
+<!-- #### The implement of ANTRP are mainly in:
 - `transformers/src/transformers/models/llama/modeling_llama.py`. -->
 
 ## Implementation
-After setup the environment, you can directly use our code base to imply <b>three LVLMs Decoding-based Hallucination Alleviation methods</b>: Vision Contrastive Decoding ([VCD](https://arxiv.org/abs/2311.16922)), Instruction Contrastive Decoding ([ICD](https://arxiv.org/abs/2403.18715)), [OPERA](https://arxiv.org/abs/2311.17911), and our SID:
+After setup the environment, you can directly use our code base to imply our ANTRP:
 
+
+```
+python pope_eval.py --pope-type coco_adversarial --model llava-1.5  --beam 5  --opera #OPERA
+
+```
 
 ```
 python pope_eval.py --pope-type coco_adversarial --model llava-1.5  --use-cd  --use-fast-v  --sample  --sample-greedy  #SID_greedy
@@ -42,10 +47,7 @@ python pope_eval.py --pope-type coco_adversarial --model llava-1.5  --use-icd  -
 python pope_eval.py --pope-type coco_adversarial --model llava-1.5  --beam 5  #Beam Search
 
 ```
-```
-python pope_eval.py --pope-type coco_adversarial --model llava-1.5  --beam 5  --opera #OPERA
 
-```
 The CHAIR metric utilizes the same configuration.
 
 
@@ -53,14 +55,16 @@ The CHAIR metric utilizes the same configuration.
 
 We provide extensive evaluation metrics including <b>GPT-4V</b> `eval_utils/gpt4v_eval.py` , <b>GPT4</b> `shr_eval.py`, <b>POPE</b> `pope_eval.py`, <b>CHAIR</b> `eval_utils/chair_eval.py`
 
-The following evaluation requires for MSCOCO 2014 / AOKVQA / GPA / Visual Genome dataset. Please download [here](https://cocodataset.org/#home) `dataset/download_cqa.py`,  `dataset/download_ha_dpo.py`,  `dataset/download_visual_genome_v1.2.py` and extract it in the data path.
+The following evaluation requires for MSCOCO 2014 / Visual Genome dataset. Please download [here](https://cocodataset.org/#home)  `dataset/download_visual_genome_v1.2.py` and extract it in the data path.
 
 Besides, it needs you to prepare the following checkpoints of 7B base models:
 
 - Download [LLaVA-1.5 merged 7B model](https://huggingface.co/liuhaotian/llava-v1.5-7b) and specify it at `eval_configs/llava-1.5_eval.yaml`.
 - Download [Vicuna 7B v1.1 model](https://github.com/lm-sys/FastChat) and specify it at `minigpt4/configs/models/blip2_instruct_vicuna7b.yaml`.
 - Download [Shikra merged 7B model](https://github.com/shikras/shikra#checkpoint) and specify it at  `eval_configs/shikra_eval.yaml`.
+- Download [MiniGPT-4 7B pretrained weights](https://drive.google.com/file/d/1RY9jV0dyqLX-o38LrumkKRh6Jtaop58R/view?usp=sharing) and specify it at [Line 8](https://github.com/shikiw/OPERA/blob/bf18aa9c409f28b31168b0f71ebf8457ae8063d5/eval_configs/minigpt4_eval.yaml#L8) of `eval_configs/minigpt4_eval.yaml`.
 
+  
 ### Arguments
 
 | Argument             | Example             | Description   |
@@ -79,13 +83,8 @@ Besides, it needs you to prepare the following checkpoints of 7B base models:
 
 
 ## Acknowledgement
-This repo is based on the LVLMs codebase of [OPERA](https://github.com/shikiw/OPERA), [VCD](https://github.com/DAMO-NLP-SG/VCD), and [HA-DPO](https://opendatalab.github.io/HA-DPO/) . Thanks for their excellent works!
+This repo is based on the LVLMs codebase of  [SID]([https://github.com/shikiw/OPERA](https://github.com/huofushuo/SID)), [OPERA](https://github.com/shikiw/OPERA), [VCD](https://github.com/DAMO-NLP-SG/VCD), and [HA-DPO](https://opendatalab.github.io/HA-DPO/) . Thanks for their excellent works!
 
-<!-- ## Citation
-If you find this work useful for your research, please cite [our paper](https://arxiv.org/pdf/2311.17911.pdf):
-```
-@article{
-}
-``` -->
+
 
 
