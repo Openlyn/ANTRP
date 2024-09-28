@@ -3,13 +3,13 @@
 
 ## Overview
 
-<p align="center"><img src="./imgs/SID.png" alt="SID" width="800px" /></p>
+<p align="center"><img src="./imgs/fig1.pdf" alt="SID" width="800px" /></p>
 
 Multimodal large language models (MLLMs) offer a powerful mechanism for interpreting visual information. However, they often suffer from hallucinations, which significantly impeded the real-world usage of these models. Existing methods attempt to alleviate this issue by leveraging external knowledge for reasoning or by designing special decoding strategies that penalize the knowledge aggregation patterns. However, these methods lack deeper analysis of the relationship between hallucination and inherent summarization mechanism of MLLMs. In this paper, we explore the causes of hallucinations by analyzing localized self-attention patterns called \textit{``anchor" tokens}. Specifically, we define the attention localization degree of the model as token propagation probabilities. Our analysis reveals that over-propagation of anchor tokens occurs when the eigenspectrum of the attention weight matrix has a non-zero mean and high variance, leading to excessive dependence on anchor tokens while neglecting vision information. This results in misalignment between factual visual content and corresponding textual generation. Based on the observation, we propose a versatile plug-and-play strategy, \textbf{An}chor \textbf{T}oken \textbf{R}e-\textbf{P}ropagation (\textbf{ANTRP}), to alleviate excessive localization through intervening the eigenspectrum variance of the attention weight matrix, thereby reducing the occurrence of hallucinations. Extensive experiments reveal a correlation between the eigenspectrum and the occurrence of hallucinations across various MLLMs, and show that ANTRP reduce the percentage of hallucinated objects in captioning tasks by 12\% and improve the accuracy on VQA task by 6.5\%.
 
-<p align="center"><img src="./imgs/token_pruning1.png" alt="token_pruning1" width="500px" /></p>
-<p align="center"><img src="./imgs/token_pruning2.png" alt="token_pruning2" width="500px" /></p>
-<b>Self-Introspective Mechanism</b> of pre-trained LVLMs. Retained vision tokens mainly focus on spurious related regions <b>informed by vision and text (both instruction and generated texts)</b>.
+<p align="center"><img src="./imgs/fig2.pdf" alt="token_pruning1" width="500px" /></p>
+
+
 
 
 ## Setup
