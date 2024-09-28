@@ -1,0 +1,4 @@
+{"question_id": 2743, "image": "COCO_val2014_000000528201.jpg", "text": "Waht are they doing?", "label": "yes"}
+{"question_id": 2744, "image": "COCO_val2014_000000528201.jpg", "text": "There are two", "label": "no"}
+{"question_id": 2746, "image": "COCO_val2014_000000528201.jpg", "text": "Is there a person in the image?", "label": "no"}
+{"question_id": 2748, "image": "COCO_val2014_000000233426.jpg", "text": "Is there a cup in the image?", "label": "no"}
