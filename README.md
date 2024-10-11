@@ -58,7 +58,7 @@ The CHAIR metric utilizes the same configuration.
 
 We provide extensive evaluation metrics including <b>GPT-4V</b> `eval_utils/gpt4v_eval.py` , <b>GPT4</b> `shr_eval.py`, <b>POPE</b> `pope_eval.py`, <b>CHAIR</b> `eval_utils/chair_eval.py`
 
-The following evaluation requires for MSCOCO 2014 / Visual Genome dataset. Please download [here](https://cocodataset.org/#home)  `dataset/download_visual_genome_v1.2.py` and extract it in the data path.
+The following evaluation requires for MSCOCO 2014 / Visual Genome dataset. For Visual Genome dataset, please download [here](https://cocodataset.org/#home)  `dataset/download_visual_genome_v1.2.py` and extract it in the data path.
 
 Besides, it needs you to prepare the following checkpoints of 7B base models:
 
